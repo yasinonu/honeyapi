@@ -1,6 +1,7 @@
 import { Body, Controller, Get, Post } from "@nestjs/common";
 import { BeeService } from './bee.service';
 import { Bee } from "./interfaces/bee.interface";
+import { CreateBeeDto } from "./dto/create-bee.dto";
 
 @Controller('bees')
 export class BeesController {

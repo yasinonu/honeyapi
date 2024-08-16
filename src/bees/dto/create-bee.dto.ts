@@ -1,4 +1,4 @@
-interface CreateBeeDto {
+export interface CreateBeeDto {
   breed: string;
-  honey_production: bigint;
+  honey_production: number;
 }
