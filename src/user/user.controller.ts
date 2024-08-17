@@ -1,6 +1,6 @@
-import { Body, Controller, Get, Post, UseGuards, Request } from "@nestjs/common";
+import { Controller, Get, Request, UseGuards } from "@nestjs/common";
 import { UserService } from "./user.service";
-import { User } from "./interfaces/user.interface";
+import { User } from "./schemas/user.schema";
 import { AuthGuard } from "../auth/auth.guard";
 
 @Controller('users')
@@ -8,8 +8,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  getBees(): User[] {
-    return this.userService.getUsers();
+  async getUsers(): Promise<User[]> {
+    return await this.userService.getUsers();
   }
 
   @UseGuards(AuthGuard)
@@ -17,9 +17,4 @@ export class UserController {
   getProfile(@Request() req): User {
     return req.user;
   }
-
-  // @Post()
-  // async create(@Body() createBeeDto: CreateBeeDto) {
-  //   this.beeService.create(createBeeDto);
-  // }
 }

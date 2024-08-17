@@ -1,3 +1,4 @@
 export const jwtConstants = {
-  secret: process.env.SECRET
+  secret: "gizli_kod"
+  // secret: process.env.SECRET
 };
