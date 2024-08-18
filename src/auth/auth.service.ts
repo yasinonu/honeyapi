@@ -23,7 +23,11 @@ export class AuthService {
     // if (user !== null) {
     //   throw new UnauthorizedException();
     // }
-    await this.userService.create({ name: username, password: pass });
-    return;
+    const user = await this.userService.create({ name: username, password: pass });
+
+    const payload = { sub: user._id, username: user.name };
+    return {
+      access_token: await this.jwtService.signAsync(payload),
+    };
   }
 }
